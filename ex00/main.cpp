@@ -18,32 +18,33 @@
 
 int main(void)
 {
-    std::cout << "\n--- Normal Classes Tests ---\n" << std::endl;
+    std::cout << "\n--- Animal polymorphism test ---\n" << std::endl;
+
     const Animal *meta = new Animal();
-    const Animal *j = new Dog();
-    const Animal *i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    std::cout << meta->getType() << " " << std::endl;
-    i->makeSound();
-    j->makeSound();
+    const Animal *dog = new Dog();
+    const Animal *cat = new Cat();
+
+    std::cout << dog->getType() << std::endl;
+    std::cout << cat->getType() << std::endl;
+    std::cout << meta->getType() << std::endl;
+
+    dog->makeSound();
+    cat->makeSound();
     meta->makeSound();
 
-    std::cout <<"\n--- Wrong Classes Tests ---\n" << std::endl;
-    const WrongAnimal *meta2 = new WrongAnimal();
-    const WrongAnimal *wc1 = new WrongCat();
-    const WrongCat *wc2 = new WrongCat();
-    std::cout << wc1->getType() << " " << std::endl;
-    std::cout << meta2->getType() << " " << std::endl;
-    std::cout << wc2->getType() << " " << std::endl;
-    wc1->makeSound();
-    meta2->makeSound();
-    wc2->makeSound();
-
     delete meta;
-    delete i;
-    delete j;
-    delete meta2;
-    delete wc2;
+    delete dog;
+    delete cat;
+
+    std::cout <<"\n--- WrongAnimal test ---\n" << std::endl;
+
+    WrongCat wrongCat;
+    const WrongAnimal *wrong = &wrongCat;
+
+    std::cout << wrong->getType() << std::endl;
+    
+    wrong->makeSound();
+    wrongCat.makeSound();
+
     return (0);
 }
