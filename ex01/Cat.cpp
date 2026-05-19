@@ -20,12 +20,6 @@ Cat::Cat() : Animal()
     std::cout << "Cat default constructor called" << std::endl;
 }
 
-Cat::Cat(std::string cat) : Animal(cat)
-{
-    _catBrain = new Brain;
-    std::cout << "Cat " << _type << " constructor called" << std::endl;
-}
-
 Cat::Cat(const Cat &other) : Animal(other)
 {
     _catBrain = new Brain(*other._catBrain);

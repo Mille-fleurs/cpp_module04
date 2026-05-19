@@ -16,12 +16,7 @@
 Dog::Dog() : Animal()
 {
     _type = "Dog";
-	std::cout << "Default Contsructor is Called for Cat!" << std::endl;
-}
-
-Dog::Dog(std::string dog) : Animal(dog)
-{
-    std::cout << "Dog " << _type << " constructor called" << std::endl;
+	std::cout << "Dog defalt constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &other) : Animal(other)

@@ -31,7 +31,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs)
 {
     if (this != &rhs)
         _type = rhs._type;
-    std::cout << "Animal assignment operator called" << std::endl;
+    std::cout << "WrongAnimal assignment operator called" << std::endl;
     return (*this);
 }
 

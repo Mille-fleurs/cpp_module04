@@ -22,7 +22,6 @@ private:
     Brain *_catBrain;
 public:
     Cat();
-    Cat(std::string cat);
     Cat(const Cat &other);
     Cat &operator=(const Cat &rhs);
     ~Cat();

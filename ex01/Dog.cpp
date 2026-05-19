@@ -20,12 +20,6 @@ Dog::Dog() : Animal()
 	std::cout << "Default Contsructor is Called for Cat!" << std::endl;
 }
 
-Dog::Dog(std::string dog) : Animal(dog)
-{
-    _dogBrain = new Brain;
-    std::cout << "Dog " << _type << " constructor called" << std::endl;
-}
-
 Dog::Dog(const Dog &other) : Animal(other)
 {
     _dogBrain = new Brain(*other._dogBrain);

@@ -22,7 +22,6 @@ private:
     Brain *_dogBrain;
 public:
     Dog();
-    Dog(std::string dog);
     Dog(const Dog &other);
     Dog &operator=(const Dog &rhs);
     ~Dog();

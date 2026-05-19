@@ -44,7 +44,6 @@ int main(void)
     delete i;
     delete j;
     delete meta2;
-    delete wc1;
     delete wc2;
     return (0);
 }
