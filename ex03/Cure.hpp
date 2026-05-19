@@ -1,6 +1,18 @@
-// 2. Ice and Cure — Concrete spells
+#ifndef CURE_HPP
+# define CURE_HPP
 
-// Both inherit from AMateria
-// Ice::use() prints: * shoots an ice bolt at <name> *
-// Cure::use() prints: * heals <name>'s wounds *
-// Both implement clone() returning a new instance of themselves
+# include "AMateria.hpp"
+
+class Cure : public AMateria
+{
+public:
+    Cure();
+    Cure(const Cure &other);
+    Cure    &operator=(const Cure &rhs);
+    ~Cure();
+
+    virtual AMateria *clone(void) const;
+    virtual void use(ICharacter &target);
+};
+
+#endif
