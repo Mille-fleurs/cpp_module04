@@ -17,40 +17,39 @@
 
 int main(void)
 {
-    std::cout << "\n---- Basic construction/destruction ----\n";
-    std::cout << "\n// Creating animals //\n";
-    const Animal *cat = new Cat();
+    std::cout << "\n---- Basic polymorphism + virtual destructor ----\n";
+
     const Animal *dog = new Dog();
-    std::cout << "\n// Deleting animals //\n";
+    const Animal *cat = new Cat();
+    dog->makeSound();
+    cat->makeSound();
     delete dog;
     delete cat;
 
-    std::cout << "\n---- Array of animals (half dogs, half cats) ----\n";
+    std::cout << "\n---- Array of animals ----\n";
+
     Animal  *animals[4];
-    std::cout << "\n// Creating animals //\n";
     for (int i = 0; i < 2; i++)
         animals[i] = new Dog();
     for (int i = 2; i < 4; i++)
         animals[i] = new Cat();
-    std::cout << "\n// Animal sounds //\n" << std::endl;
     for (int i = 0; i < 4; i++)
     {
-        std::cout << "Animal" << i << " : [" << animals[i]->getType() << "] : ";
+        std::cout << "Animal " << i << " : [" << animals[i]->getType() << "] : ";
         animals[i]->makeSound(); 
     }
-    std::cout << "\n// Deleting animals //\n";
     for (int i = 0; i < 4; i++)
         delete animals[i];
     
-    std::cout << "\n---- Deep copy test ----\n";
+    std::cout << "\n---- Copy constructor test ----\n";
+
     Dog originalDog;
-    std::cout << "\n// Copying dog //\n";
     Dog copiedDog(originalDog);
     Cat originalCat;
-    std::cout << "\n// Copying dog //\n";
     Cat copiedCat(originalCat);
 
     std::cout << "\n---- Assignment operator test ---\n";
+    
     Dog dog1;
     Dog dog2;
     dog1 = dog2;
@@ -58,5 +57,6 @@ int main(void)
     Cat cat2;
     cat1 = cat2;
 
+    std::cout << "\n---- End of main ----\n";
     return (0);
 }

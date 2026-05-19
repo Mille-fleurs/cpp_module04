@@ -28,10 +28,13 @@ Cat::Cat(const Cat &other) : Animal(other)
 
 Cat &Cat::operator=(const Cat &rhs)
 {
-    Animal::operator=(rhs);
-    delete this->_catBrain;
-    _catBrain = new Brain(*rhs._catBrain);
-    std::cout << "Cat assignment operator called" << std::endl;
+    if (this != &rhs)
+    {
+        Animal::operator=(rhs);
+        delete this->_catBrain;
+        _catBrain = new Brain(*rhs._catBrain);
+        std::cout << "Cat assignment operator called" << std::endl;
+    }
     return (*this);
 }
 
@@ -43,5 +46,5 @@ Cat::~Cat()
 
 void    Cat::makeSound() const
 {
-    std::cout << "miau miau" << std::endl;
+    std::cout << "Meow Meow" << std::endl;
 }

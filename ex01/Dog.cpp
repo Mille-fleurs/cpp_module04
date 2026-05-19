@@ -17,7 +17,7 @@ Dog::Dog() : Animal()
 {
     _type = "Dog";
     _dogBrain = new Brain;
-	std::cout << "Default Contsructor is Called for Cat!" << std::endl;
+	std::cout << "Dog default contsructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &other) : Animal(other)
@@ -46,5 +46,5 @@ Dog::~Dog()
 
 void    Dog::makeSound() const
 {
-    std::cout << "Bark Bark" << std::endl;
+    std::cout << "Woof Woof" << std::endl;
 }
