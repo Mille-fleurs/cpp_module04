@@ -18,6 +18,11 @@ Cure    &Cure::operator=(const Cure &rhs)
     return (*this);
 }
 
+Cure::~Cure()
+{
+    std::cout << "Cure destructor called" << std::endl;
+}
+
 AMateria *Cure::clone(void) const
 {
     AMateria    *copy;

@@ -12,6 +12,8 @@ MateriaSource::MateriaSource() : IMateriaSource()
 
 MateriaSource::MateriaSource(MateriaSource const &other)
 {
+    for (int i = 0; i < 4; i++)
+        _tab[i] = NULL;
     std::cout << "MateriaSource copy constructor called" << std::endl;
     *this = other;
 }

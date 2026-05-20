@@ -3,13 +3,6 @@
 #include "Character.hpp"
 #include "MateriaSource.hpp"
 
-// AMateria        = base class for spells
-// Ice / Cure      = real spells
-// ICharacter      = interface for characters
-// Character       = real character with inventory[4]
-// IMateriaSource  = interface for spellbook
-// MateriaSource   = real spellbook that learns and creates spells
-
 int main(void)
 {
     IMateriaSource *src = new MateriaSource();
