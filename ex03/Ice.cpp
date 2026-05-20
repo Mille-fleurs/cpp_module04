@@ -18,6 +18,11 @@ Ice    &Ice::operator=(const Ice &rhs)
     return (*this);
 }
 
+Ice::~Ice()
+{
+    std::cout << "Ice destructor called" << std::endl;
+}
+
 AMateria *Ice::clone(void) const
 {
     AMateria    *copy;
