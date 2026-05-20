@@ -11,7 +11,7 @@ private:
     AMateria    *_tab[4];
 public:
     MateriaSource();
-    MateriaSource(MateriaSource const &rhs);
+    MateriaSource(MateriaSource const &other);
     MateriaSource &operator=(MateriaSource const &rhs);
     ~MateriaSource();
 
@@ -20,9 +20,3 @@ public:
 };
 
 #endif
-
-// 6. MateriaSource — Concrete spellbook
-
-// Implements IMateriaSource
-// Stores up to 4 learned Materia templates
-// createMateria("ice") → returns new Ice via clone()
