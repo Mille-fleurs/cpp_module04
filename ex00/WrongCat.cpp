@@ -13,9 +13,8 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() : WrongAnimal()
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-    _type = "WrongCat";
     std::cout << "WrongCat default constructor called" << std::endl;
 }
 
@@ -32,7 +31,7 @@ WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 WrongCat &WrongCat::operator=(const WrongCat &rhs)
 {
     if (this != &rhs)
-        _type = rhs._type;
+        WrongAnimal::operator=(rhs);
     std::cout << "WrongCat assignment operator called" << std::endl;
     return (*this);
 }
