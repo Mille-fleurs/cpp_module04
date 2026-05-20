@@ -2,17 +2,18 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-#include <iostream>
-#include "ICharacter.hpp"
+# include <iostream>
+# include <string>
+# include "ICharacter.hpp"
 
-class AMatria
+class AMateria
 {
-protected
+protected:
     std::string _type;
 public:
     AMateria();
     AMateria(std::string const &type);
-    AMateria(AMateria const &rhs);
+    AMateria(AMateria const &other);
     AMateria &operator=(AMateria const &rhs);
     virtual ~AMateria();
 
@@ -20,11 +21,6 @@ public:
 
     virtual AMateria *clone(void) const = 0;
     virtual void use(ICharacter &target);
-}
+};
 
 #endif
-
-// AMateria — Abstract base for all spells
-// Has a type (string like "ice" or "cure")
-// clone() = 0 → each spell knows how to copy itself
-// use() → prints the spell effect targeting a character

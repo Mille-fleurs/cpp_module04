@@ -44,6 +44,11 @@ Cat::~Cat()
     std::cout << "Cat destructor called" << std::endl;
 }
 
+Brain *Cat::getBrain(void) const
+{
+    return (_catBrain);
+}
+
 void    Cat::makeSound() const
 {
     std::cout << "Meow Meow" << std::endl;

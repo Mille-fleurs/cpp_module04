@@ -47,7 +47,7 @@ int main(void)
         Dog tmp = Momo;
         std::cout << "tmp goes out of scope:\n";
     }
-    Momo.makeSound();
+    std::cout << Momo.getBrain()->getIdea(0) << std::endl;
     
     std::cout << "\n---- Copy constructor test ----\n";
 

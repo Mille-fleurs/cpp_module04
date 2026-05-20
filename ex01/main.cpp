@@ -43,19 +43,32 @@ int main(void)
     
     std::cout << "\n---- Copy constructor test ----\n";
 
-    Dog originalDog;
-    Dog copiedDog(originalDog);
     Cat originalCat;
     Cat copiedCat(originalCat);
 
+    std::cout << "\n---- Deep copy test ----\n";
+    Dog originalDog;
+    originalDog.getBrain()->setIdea(0, "Original idea");
+    Dog copiedDog(originalDog);
+    originalDog.getBrain()->setIdea(0, "Changed idea");
+    std::cout << "Original: " << originalDog.getBrain()->getIdea(0) << std::endl;
+    std::cout << "Copy: " << copiedDog.getBrain()->getIdea(0)<< std::endl;
+
     std::cout << "\n---- Assignment operator test ---\n";
     
-    Dog dog1;
-    Dog dog2;
-    dog1 = dog2;
     Cat cat1;
     Cat cat2;
-    cat1 = cat2;
+    cat2 = cat1;
+
+    std::cout << "\n---- Deep copy assignment test ---\n";
+
+    Dog dog1;
+    Dog dog2;
+    dog1.getBrain()->setIdea(0, "Dog1 idea");
+    dog2 = dog1;
+    dog1.getBrain()->setIdea(0, "Dog1 changed");
+    std::cout << dog1.getBrain()->getIdea(0) << std::endl;
+    std::cout << dog2.getBrain()->getIdea(0) << std::endl;
 
     std::cout << "\n---- End of main ----\n";
     return (0);
