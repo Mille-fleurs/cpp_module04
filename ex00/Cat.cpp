@@ -13,9 +13,8 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : Animal("Cat")
 {
-    _type = "Cat";
     std::cout << "Cat default constructor called" << std::endl;
 }
 
