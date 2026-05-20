@@ -50,6 +50,7 @@ void    MateriaSource::learnMateria(AMateria *m)
         return ;
     }
     _tab[i] = m->clone();
+    delete m;
     std::cout << "Materia learned" << std::endl;
     if (i == 3)
         std::cout << "MateriaSource now full." << std::endl;

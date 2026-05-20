@@ -28,19 +28,26 @@ Character::Character(const Character &other) : ICharacter(other)
 
 Character   &Character::operator=(Character const &rhs)
 {
-    int i;
-
-    std::cout << "Character assignment operator called" << std::endl;
-    _name = rhs._name;
     if (this != &rhs)
     {
-        delete _slots[i];
-        _slots[i] = NULL;
-        if (rhs._slots[i] != NULL)
-            _slots[i] = rhs._slots[i]->clone();
-        i++;
+        _name = rhs._name;
+        for (int i = 0; i < 4; i++)
+        {
+            delete _slots[i];
+            _slots[i] = NULL;
+            if (rhs._slots[i] != NULL)
+                _slots[i] = rhs._slots[i]->clone();
+        }
     }
+    std::cout << "Character assignment operator called" << std::endl;
     return (*this);
+}
+
+Character::~Character()
+{
+    for (int i = 0; i < 4; i++)
+        delete _slots[i];
+    std::cout << "Character destrcutor called" << std::endl;
 }
 
 std::string const &Character::getName(void) const
@@ -54,7 +61,7 @@ void    Character::equip(AMateria *m)
         return ;
     for (int i = 0; i < 4; i++)
     {
-        if (_slots[i] = NULL)
+        if (_slots[i] == NULL)
         {
             _slots[i] = m;
             return ;
@@ -73,7 +80,7 @@ void    Character::use(int idx, ICharacter &target)
 {
     if (idx < 0 || idx >= 4)
         return ;
-    if (_slots[idx])
+    if (_slots[idx] == NULL)
         _slots[idx]->use(target);
 }
 
