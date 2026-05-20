@@ -22,6 +22,8 @@ Character::Character(const std::string name) : ICharacter(), _name(name)
 
 Character::Character(const Character &other) : ICharacter(other)
 {
+    for (int i = 0; i < 4; i++)
+        _slots[i] = NULL;
     std::cout << "Charactyer copy constructor called" << std::endl;
     *this = other;
 }
@@ -80,7 +82,7 @@ void    Character::use(int idx, ICharacter &target)
 {
     if (idx < 0 || idx >= 4)
         return ;
-    if (_slots[idx] == NULL)
+    if (_slots[idx] != NULL)
         _slots[idx]->use(target);
 }
 

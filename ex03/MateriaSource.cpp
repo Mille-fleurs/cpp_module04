@@ -32,6 +32,13 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
     return (*this);
 }
 
+MateriaSource::~MateriaSource()
+{
+    for (int i = 0; i < 4; i++)
+        delete _tab[i];
+    std::cout << "MateriaSoource destructor called" << std::endl;
+}
+
 void    MateriaSource::learnMateria(AMateria *m)
 {
     int i;
