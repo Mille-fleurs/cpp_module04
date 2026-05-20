@@ -13,9 +13,8 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : Animal("Cat")
 {
-    _type = "Cat";
     _catBrain = new Brain;
     std::cout << "Cat default constructor called" << std::endl;
 }
@@ -33,8 +32,8 @@ Cat &Cat::operator=(const Cat &rhs)
         Animal::operator=(rhs);
         delete this->_catBrain;
         _catBrain = new Brain(*rhs._catBrain);
-        std::cout << "Cat assignment operator called" << std::endl;
     }
+    std::cout << "Cat assignment operator called" << std::endl;
     return (*this);
 }
 
