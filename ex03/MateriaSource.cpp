@@ -1,13 +1,11 @@
 
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource() : IMateriaSource()
+MateriaSource::MateriaSource()
 {
     std::cout << "MateriaSource default constructor called" << std::endl;
-    _tab[0] = NULL;
-    _tab[1] = NULL;
-    _tab[2] = NULL;
-    _tab[3] = NULL;
+    for (int i = 0; i < 4; i++)
+        _tab[i] = NULL;
 }
 
 MateriaSource::MateriaSource(MateriaSource const &other)
@@ -43,41 +41,25 @@ MateriaSource::~MateriaSource()
 
 void    MateriaSource::learnMateria(AMateria *m)
 {
-    int i;
-
-    i = 0;
     if (m == NULL)
-    {
-        std::cout << "Null materia." << std::endl;
         return ;
-    }
-    while (i < 4 && _tab[i] != NULL)
-        i++;
-    if (i == 4)
+    for (int i = 0; i < 4; i++)
     {
-        std::cout << "Materia source full." << std::endl;
-        return ;
+        if (_tab[i] == NULL)
+        {
+            _tab[i] = m;
+            return ;
+        }
     }
-    _tab[i] = m->clone();
     delete m;
-    std::cout << "Materia learned" << std::endl;
-    if (i == 3)
-        std::cout << "MateriaSource now full." << std::endl;
 }
 
 AMateria    *MateriaSource::createMateria(std::string const &type)
 {
-    int i;
-    AMateria    *copy;
-
-    i = 0;
-    while (i < 4 && _tab[i] != NULL && type.compare(_tab[i]->getType()) != 0)
-        i++;
-    if (i == 4 || _tab[i] == NULL)
+    for (int i = 0; i < 4; i++)
     {
-        std::cout << "Unknown materia type." << std::endl;
-        return (0);
+        if (_tab[i] && type.compare(_tab[i]->getType()) == 0)
+            return (_tab[i]->clone());
     }
-    copy = _tab[i]->clone();
-    return (copy);
+    return (0);
 }

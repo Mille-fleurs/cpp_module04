@@ -2,25 +2,21 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
-Character::Character() : ICharacter(), _name("default")
+Character::Character() : _name("default")
 {
     std::cout << "Character default constructor called" << std::endl;
-    _slots[0] = NULL;
-    _slots[1] = NULL;
-    _slots[2] = NULL;
-    _slots[3] = NULL;
+    for (int i = 0; i < 4; i++)
+        _slots[i] = NULL;
 };
 
-Character::Character(const std::string name) : ICharacter(), _name(name)
+Character::Character(const std::string name) : _name(name)
 {
     std::cout << "Character " << _name << " constructor called" << std::endl;
-    _slots[0] = NULL;
-    _slots[1] = NULL;
-    _slots[2] = NULL;
-    _slots[3] = NULL;
+    for (int i = 0; i < 4; i++)
+        _slots[i] = NULL;
 }
 
-Character::Character(const Character &other) : ICharacter(other)
+Character::Character(const Character &other)
 {
     for (int i = 0; i < 4; i++)
         _slots[i] = NULL;
@@ -69,11 +65,12 @@ void    Character::equip(AMateria *m)
             return ;
         }
     }
+    delete m;
 }
 
 void    Character::unequip(int idx)
 {
-    if (idx < 0 || idx >= 4)
+    if (idx < 0 || idx >= 4 || _slots[idx] == NULL)
         return ;
     _slots[idx] = NULL;
 }
@@ -86,3 +83,9 @@ void    Character::use(int idx, ICharacter &target)
         _slots[idx]->use(target);
 }
 
+AMateria *Character::getMateria(int idx) const
+{
+    if (idx < 0 || idx >= 4)
+        return (0);
+    return (_slots[idx]);
+}

@@ -20,8 +20,7 @@ AMateria::AMateria(AMateria const &other)
 AMateria    &AMateria::operator=(AMateria const &rhs)
 {
     std::cout << "AMateria assignment operator called" <<std::endl;
-    if (this != &rhs)
-        _type = rhs.getType();
+    (void)rhs;
     return (*this);
 }
 
