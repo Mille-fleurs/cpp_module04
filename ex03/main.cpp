@@ -2,6 +2,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
+#include "AMateria.hpp"
 #include "MateriaSource.hpp"
 
 int main(void)
@@ -11,22 +12,32 @@ int main(void)
     IMateriaSource *src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
-
+    
     ICharacter *me = new Character("me");
+    Character *you = new Character("you");
 
     AMateria *tmp;
     tmp = src->createMateria("ice");
-    me->equip(tmp);
+    you->equip(tmp);
     tmp = src->createMateria("cure");
-    me->equip(tmp);
-
+    you->equip(tmp);
+    for (int i = 0; i < 2; i++)
+    {
+        AMateria *m = you->getMateria(i);
+        if (m)
+            std::cout << "Charactor_slots[" << i << "] : " << m->getType() << std::endl;
+        else
+            std::cout << "Charactor_slots[" << i << "] : empty" << std::endl;
+    }
+    
     ICharacter *bob = new Character("bob");
 
-    me->use(0, *bob);
-    me->use(1, *bob);
+    you->use(0, *bob);
+    you->use(1, *bob);
 
     delete bob;
     delete me;
+    delete you;
     delete src;
 
     std::cout << "\n--- Full inventory + overflow ---\n";
@@ -44,7 +55,6 @@ int main(void)
             std::cout << m->getType() << std::endl;
         else
             std::cout << "empty" << std::endl;
-        delete m;
     }
 
     std::cout << "\n--- Unequipped test ---\n";

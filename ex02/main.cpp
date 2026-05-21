@@ -19,8 +19,8 @@ int main(void)
 {
     std::cout << "\n---- Basic polymorphism + virtual destructor ----\n";
 
-    const Animal *dog = new Dog();
-    const Animal *cat = new Cat();
+    const AAnimal *dog = new Dog();
+    const AAnimal *cat = new Cat();
     dog->makeSound();
     cat->makeSound();
     delete dog;
@@ -28,14 +28,14 @@ int main(void)
 
     std::cout << "\n---- Array of animals ----\n";
 
-    Animal  *animals[4];
+    AAnimal  *animals[4];
     for (int i = 0; i < 2; i++)
         animals[i] = new Dog();
     for (int i = 2; i < 4; i++)
         animals[i] = new Cat();
     for (int i = 0; i < 4; i++)
     {
-        std::cout << "Animal " << i << " : [" << animals[i]->getType() << "] : ";
+        std::cout << "AAnimal " << i << " : [" << animals[i]->getType() << "] : ";
         animals[i]->makeSound(); 
     }
     for (int i = 0; i < 4; i++)
